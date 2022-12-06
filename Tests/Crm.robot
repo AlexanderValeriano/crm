@@ -34,7 +34,12 @@ Should be able to add new customer
     input text              id=EmailAddress      bruce.wayne@batman.com
     input text              id=FirstName        Bruce
     input text              id=LastName         Wayne
-    input text              id=City             TX
+    input text              id=City             Dallas
+    select from list by value    id=StateOrRegion       TX
+    select radio button     gender  male
+    select checkbox         name=promos-name
+    click button            Submit
+    wait until page contains    Success! New customer added.
 
     sleep                   3s
     close browser
