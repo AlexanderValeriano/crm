@@ -1,6 +1,9 @@
 *** Settings ***
 Documentation       This is some basic info about the whole suite
 Library             SeleniumLibrary
+Resource            ../Resources/Common.robot
+Test Setup          Begin Web Test
+Test Teardown       End Web Test
 #Run the script
 #robot -d results tests/crm.robot
 *** Variables ***
@@ -13,17 +16,6 @@ ${VALID_LOGIN_PASSWORD}                 qwe
 Should be able to add new customer
     [Documentation]                     This is some info about the test
     [Tags]                              1006    Smoke  Contacts
-    #Initialize Selenium
-    set selenium speed                  .2s
-    set selenium timeout                10s
-    #open the browser
-    log                                 Starting the test case!
-    open browser                        ${URL}       ${BROWSER}
-    #resize browser window for recording
-    set window position                 x=34   y=16
-    set window size                     width=1235  height=900
-
-    wait until page contains            Customers Are Priority One!
 
     click link                          id=SignIn
     wait until page contains            Login
@@ -49,6 +41,5 @@ Should be able to add new customer
     click link                          Sign Out
     wait until page contains            Signed Out
 
-    close browser
 
 *** Keywords ***
